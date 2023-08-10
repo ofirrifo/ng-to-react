@@ -3,7 +3,6 @@ import { Route } from '@angular/router';
 export const appRoutes: Route[] = [
   {
     path: '',
-
     children: [
       { path: '', redirectTo: 'page-a', pathMatch: 'full' },
       {
