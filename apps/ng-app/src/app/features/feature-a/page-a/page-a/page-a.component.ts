@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { map, Observable } from 'rxjs';
 
 interface Response {
   results: Pokemon[];
@@ -14,18 +15,15 @@ interface Pokemon {
   templateUrl: './page-a.component.html',
   styleUrls: ['./page-a.component.scss'],
 })
-export class PageAComponent implements OnInit {
-  public items: Pokemon[] = [];
+export class PageAComponent {
+  public items$: Observable<Pokemon[]> = this.http.get('https://pokeapi.co/api/v2/pokemon')
+    .pipe(map((response: any) => {
+      return response.results;
+    }));
   public selectedPokemonName = '';
 
 
   constructor(private http: HttpClient) {
-  }
-
-  ngOnInit() {
-    this.http.get('https://pokeapi.co/api/v2/pokemon').subscribe((response: any) => {
-      this.items = response.results;
-    })
   }
 
   addItem() {
@@ -36,7 +34,7 @@ export class PageAComponent implements OnInit {
     return item.name;
   }
 
-  handleSelection(item: Pokemon) {
-    this.selectedPokemonName = item.name;
+  handleSelection(name: string) {
+    this.selectedPokemonName = name;
   }
 }

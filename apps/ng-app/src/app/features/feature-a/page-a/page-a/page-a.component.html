@@ -1,11 +1,12 @@
 <h3>Page A</h3>
 <h1>Item List</h1>
-<ul class="pokemon-list">
+<ul class="pokemon-list" ngToReactArrowNav (itemSelected)="handleSelection($event)">
   <li
-    *ngFor="let item of items; trackBy: trackByFn"
+    *ngFor="let item of items$ | async; trackBy: trackByFn"
     class="pokemon-item"
-    [class.selected]="selectedPokemonName === item.name"
-    (click)="handleSelection(item)">
+    tabindex="0"
+    [class.selected]="selectedPokemonName.toLowerCase() === item.name.toLowerCase()"
+    (click)="handleSelection(item.name)">
     {{item.name}}
   </li>
 </ul>

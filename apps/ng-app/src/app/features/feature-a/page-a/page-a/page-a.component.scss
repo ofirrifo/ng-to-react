@@ -20,6 +20,11 @@
       background-color: var(--P5);
     }
 
+    &.active {
+      background-color: var(--P5);
+      outline: 1px solid var(--P40);
+    }
+
     &.selected {
       background-color: var(--P10);
     }
