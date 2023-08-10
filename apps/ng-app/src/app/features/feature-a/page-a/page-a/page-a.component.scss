@@ -16,6 +16,10 @@
     border-radius: 3px;
     text-transform: capitalize;
 
+    &:focus{
+      outline: 0;
+    }
+
     &:hover {
       background-color: var(--P5);
     }
