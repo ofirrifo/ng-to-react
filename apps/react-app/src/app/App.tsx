@@ -3,7 +3,18 @@ import { Link, Route, Routes } from 'react-router-dom';
 
 export function App() {
   return (
-    <h1>React App</h1>
+    <>
+      <h1>React App</h1>
+      <Routes>
+        <Route path="/" element={<div>Route</div>} />
+        <Route
+          path="*"
+          element={<div>{}</div>}
+        />
+      </Routes>
+    </>
+
+
   );
 }
 
