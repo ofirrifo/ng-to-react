@@ -26,10 +26,6 @@ export class PageAComponent {
   constructor(private http: HttpClient) {
   }
 
-  addItem() {
-
-  }
-
   trackByFn(index: number, item: Pokemon) {
     return item.name;
   }
