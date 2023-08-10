@@ -1,1 +1,13 @@
 <h3>Page A</h3>
+<h1>Item List</h1>
+<ul class="pokemon-list">
+  <li
+    *ngFor="let item of items; trackBy: trackByFn"
+    class="pokemon-item"
+    [class.selected]="selectedPokemonName === item.name"
+    (click)="handleSelection(item)">
+    {{item.name}}
+  </li>
+</ul>
+<!--<input type="text" [(ngModel)]="newItemName" />-->
+<button (click)="addItem()">Add Item</button>
