@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "nx run ng-app:serve --open",
+    "start:angular:app": "nx run ng-app:serve --open",
     "build": "nx build",
     "test": "nx test"
   },
