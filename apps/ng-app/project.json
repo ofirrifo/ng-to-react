@@ -56,6 +56,9 @@
           "browserTarget": "ng-app:build:development"
         }
       },
+      "options": {
+        "port": 4700
+      },
       "defaultConfiguration": "development"
     },
     "extract-i18n": {

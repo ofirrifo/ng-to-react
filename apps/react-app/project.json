@@ -1,0 +1,77 @@
+{
+  "name": "react-app",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/react-app/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/react-app",
+        "index": "apps/react-app/src/index.html",
+        "baseHref": "/",
+        "main": "apps/react-app/src/main.tsx",
+        "tsConfig": "apps/react-app/tsconfig.app.json",
+        "assets": [
+          "apps/react-app/src/favicon.ico",
+          "apps/react-app/src/assets"
+        ],
+        "styles": ["apps/react-app/src/styles.scss"],
+        "scripts": [],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/react-app/webpack.config.js"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/react-app/src/environments/environment.ts",
+              "with": "apps/react-app/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/webpack:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "react-app:build",
+        "port": 4800,
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "react-app:build:development"
+        },
+        "production": {
+          "buildTarget": "react-app:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/react-app/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  },
+  "tags": []
+}
