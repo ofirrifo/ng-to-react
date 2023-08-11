@@ -1,13 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 
-interface Response {
-  results: Pokemon[];
-}
-
 interface Pokemon {
   name: string;
+  url: string;
+}
+
+interface ApiResponse {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: Pokemon[];
 }
 
 @Component({
@@ -16,15 +20,12 @@ interface Pokemon {
   styleUrls: ['./page-a.component.scss'],
 })
 export class PageAComponent {
-  public items$: Observable<Pokemon[]> = this.http.get('https://pokeapi.co/api/v2/pokemon')
-    .pipe(map((response: any) => {
-      return response.results;
-    }));
+  public items$: Observable<Pokemon[]> = this.http
+    .get<ApiResponse>('https://pokeapi.co/api/v2/pokemon')
+    .pipe(map(({ results }) => results));
   public selectedPokemonName = '';
 
-
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   trackByFn(index: number, item: Pokemon) {
     return item.name;
