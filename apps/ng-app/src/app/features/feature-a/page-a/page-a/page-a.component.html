@@ -6,7 +6,8 @@
     class="pokemon-item"
     tabindex="0"
     [class.selected]="selectedPokemonName.toLowerCase() === item.name.toLowerCase()"
-    (click)="handleSelection(item.name)">
-    {{item.name}}
+    (click)="handleSelection(item.name)"
+  >
+    {{ item.name }}
   </li>
 </ul>

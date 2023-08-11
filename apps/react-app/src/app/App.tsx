@@ -7,14 +7,9 @@ export function App() {
       <h1>React App</h1>
       <Routes>
         <Route path="/" element={<div>Route</div>} />
-        <Route
-          path="*"
-          element={<div>{}</div>}
-        />
+        <Route path="*" element={<div>{}</div>} />
       </Routes>
     </>
-
-
   );
 }
 

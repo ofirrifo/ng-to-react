@@ -1,4 +1,11 @@
-import { Directive, ElementRef, EventEmitter, HostListener, Output, Renderer2 } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  Output,
+  Renderer2,
+} from '@angular/core';
 
 @Directive({
   selector: '[ngToReactArrowNav]',
@@ -6,12 +13,9 @@ import { Directive, ElementRef, EventEmitter, HostListener, Output, Renderer2 } 
 export class ArrowNavDirective {
   @Output() itemSelected: EventEmitter<string> = new EventEmitter<string>();
 
-
   private readonly ACTIVE_ITEM_CSS_CLASS = 'active';
 
-  constructor(private el: ElementRef, private renderer: Renderer2) {
-
-  }
+  constructor(private el: ElementRef, private renderer: Renderer2) {}
 
   @HostListener('document:keydown.Enter', ['$event'])
   onEnter(event: KeyboardEvent): void {
@@ -22,7 +26,6 @@ export class ArrowNavDirective {
       this.renderer.removeClass(activeElement, this.ACTIVE_ITEM_CSS_CLASS);
     }
   }
-
 
   @HostListener('document:keydown.ArrowDown', ['$event'])
   onKeyArrowDown(event: KeyboardEvent): void {
