@@ -1,5 +1,5 @@
-<h3>Page A</h3>
-<h1>Item List</h1>
+<h2>Pokemon List</h2>
+
 <ul class="pokemon-list" ngToReactArrowNav (itemSelected)="handleSelection($event)">
   <li
     *ngFor="let item of items$ | async; trackBy: trackByFn"

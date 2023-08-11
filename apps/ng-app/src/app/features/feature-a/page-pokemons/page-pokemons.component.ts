@@ -15,11 +15,11 @@ interface ApiResponse {
 }
 
 @Component({
-  selector: 'ng-to-react-page-a',
-  templateUrl: './page-a.component.html',
-  styleUrls: ['./page-a.component.scss'],
+  selector: 'ng-to-react-page-pokemons',
+  templateUrl: './page-pokemons.component.html',
+  styleUrls: ['./page-pokemons.component.scss'],
 })
-export class PageAComponent {
+export class PagePokemonsComponent {
   public items$: Observable<Pokemon[]> = this.http
     .get<ApiResponse>('https://pokeapi.co/api/v2/pokemon')
     .pipe(map(({ results }) => results));
@@ -33,5 +33,6 @@ export class PageAComponent {
 
   handleSelection(name: string) {
     this.selectedPokemonName = name;
+    console.log('Selected pokemon name: ', name);
   }
 }

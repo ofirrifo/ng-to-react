@@ -1,11 +1,11 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PageAComponent } from './page-a/page-a/page-a.component';
+import { PagePokemonsComponent } from './page-pokemons/page-pokemons.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: PageAComponent,
+    component: PagePokemonsComponent,
   },
 ];
 
